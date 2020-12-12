@@ -1,0 +1,44 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ДЗ метрология. Проверка нормальности выборки критерием Xи-квадрат Пирсона</title>
+</head>
+<body>
+
+    <form method="POST" action="/submit" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token() }}
+
+        <p>
+            <label for="file">TXT файл</label>
+            {{ form.file(size=20) }}
+        </p>
+        <p>
+            <label for="num_parts">Число интервалов (по умолчанию 6)</label>
+            {{ form.num_parts }}
+        </p>
+        <p>
+            <label for="conf_level">Уровень достоверности (по умолчанию 0.05)</label>
+            {{ form.conf_level(size=20) }}
+        </p>
+        <p>
+            <input type="submit" value="Go">
+        </p>
+
+        {% for field in form if field.name != "csrf_token" %}
+            <p>
+                {% for error in field.errors %}
+                    {{ error }}
+                {% endfor %}
+            </p>
+        {% endfor %}
+
+    </form>
+
+</body>
+</html>
+
+    </form>
+
+</body>
+</html>
